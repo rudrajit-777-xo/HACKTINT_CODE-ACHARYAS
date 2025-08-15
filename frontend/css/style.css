@@ -117,8 +117,8 @@ Table of content:
   --mainmenu-letter-spacing: 0;
   --mainmenu-text-transform: none;
   /* header logo */
-  --logo-width: 180px;
-  --logo-footer-width: 220px;
+  --logo-width: 200px;
+  --logo-footer-width: 250px;
   /* misc */
   --border-default: solid 1px rgba(30, 30, 30, 1);
   --bg-color-even: #E8E8E8;
@@ -470,6 +470,13 @@ div#logo img{
 footer .logo-footer{
   max-width: var(--logo-footer-width);
 }
+
+footer img.logo-footer {
+  max-width: var(--logo-footer-width);
+  height: auto;
+  display: block;
+}
+
 
 header.smaller div#logo .logo-1 {
   display: none;
