@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #181818;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.aibot{
+   margin-top: 100px;
+    border-radius: 20px;
+    width: 350px;
+    height: 300px;
+    background: #363636;
+    padding: 10px;
+    box-shadow: 0 1px 6px rgba(100, 100, 100, 0.5);
+}
+.aibot .chat{
+   width: 100%;
+   height: 80%;
+   background: #424242;
+   border-radius: inherit;
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   justify-content: center;
+   align-items: center;
+}
+.aibot .chat .robot {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+}
+.aibot .chat .robot h2{
+    text-align: center;
+    margin-top: -70px;
+}
+.aibot .chat .robot p{
+    font-size: 14px;
+    font-family: roboto;
+    text-align: center;
+    color: #6e6e6e;
+}
+.text-collor-effect {
+    background: linear-gradient(to right, rgb(49, 232, 245), #8308d4, #8a21ec, #6070fd, #3950e7, rgb(49, 232, 245));
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    background-size: 200%;
+    -webkit-text-fill-color: transparent;
+    animation: text 3s linear infinite;
+    font-weight: bold;
+}
+@keyframes text {
+    100%{
+        background-position: 100%;
+    }
+
+}
+.aibot .chat .robot video{
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: lighten;
+}
+.aibot .input{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+}
+.aibot .input input{
+    width: calc(80% - 10px);
+    height: 40px;
+    border-radius: 20px;
+    background: #424242;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    color: #ffff;
+}
+.aibot .input .videodiv{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-right: -20px;
+    margin-top: -23px;
+
+}
+.aibot .input .videodiv video{
+    position: relative;
+    z-index: 99999;
+     height: 90px;
+    width: 120px;
+    mix-blend-mode: lighten;
+    
+}
+.aibot .chat .user-input, .aibot .chat .aibot-output{
+    width: 100%;
+    height: 100%;
+}
+.aibot .chat .aibot-output{
+   
+    display: flex;
+    justify-content: left;
+}
+.aibot .chat .user-input{
+   
+    display: flex;
+    justify-content: right;
+}
+#inputmessage{
+    margin-right: 20px;
+    margin-top: 20px;
+    color: #fff;
+    background: purple;
+    height: fit-content;
+    padding: 10px 20px;
+    border-radius: 99999px;
+    opacity: 0;
+    transition: .3s ease-out;
+}
+#outputmessage{
+    margin-left: 10px;
+    text-wrap: wrap;
+    margin-top: 20px;
+    color: #fff;
+    background: #363636;
+    height: fit-content;
+    padding: 10px 20px;
+    border-radius: 99999px;
+    opacity: 0;
+    font-size: 12px;
+    transition: .3s ease-out;
+    white-space: nowrap; 
+    /* Adjust as needed */
+  overflow: hidden;
+    font-family: 'roboto', sans-serif;
+     
+}
+
+
+
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  
