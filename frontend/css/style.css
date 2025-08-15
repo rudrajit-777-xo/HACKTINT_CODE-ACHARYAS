@@ -1246,6 +1246,23 @@ header.header-mobile.header-center #logo-center{
   background: var(--bg-dark-1);
 }
 
+.animated-border-btn {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--primary-color);
+  background: var(--primary-color);
+  min-width: 250px !important;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.animated-border-btn:hover {
+  color: #fff;
+}
+
 /* ================================================== */
 
 
