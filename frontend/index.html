@@ -308,6 +308,60 @@
                         </a>
                     </div>
 
+                    <div class="col-lg-4 col-md-6">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0SUhiSD3IfpaJ6vbjwA2hESYU1ohyA7xUDZuhdSzkfSJZ0w/viewform?usp=pp_url&entry.123456=TINT+Photography+Club" target="_blank" style="text-decoration:none; color:inherit;">
+                        <div class="hover">
+                            <div class="bg-dark-2 relative rounded-1 overflow-hidden hover-bg-color hover-text-light wow scale-in-mask">
+                                <div class="abs p-40 bottom-0 z-2">
+                                    <div class="relative wow fadeInUp">
+                                        <h4>TINT Music Club</h4>
+                                        <p class="mb-0">The Art Club provides a platform for students to explore and express their artistic talents through various mediums.</p>
+                                    </div>
+                                </div>
+                                <div class="gradient-edge-bottom h-100"></div>
+                                <img src="images/misc/s6.avif" class="w-100 hover-scale-1-1" alt="">
+                                <div class="abs w-100 h-100 start-0 top-0 hover-op-1 radial-gradient-color"></div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0SUhiSD3IfpaJ6vbjwA2hESYU1ohyA7xUDZuhdSzkfSJZ0w/viewform?usp=pp_url&entry.123456=TINT+Photography+Club" target="_blank" style="text-decoration:none; color:inherit;">
+                        <div class="hover">
+                            <div class="bg-dark-2 relative rounded-1 overflow-hidden hover-bg-color hover-text-light wow scale-in-mask">
+                                <div class="abs p-40 bottom-0 z-2">
+                                    <div class="relative wow fadeInUp">
+                                        <h4>ACM Student Chapter</h4>
+                                        <p class="mb-0">A global computing society that fosters coding, research, and innovation through student-led events and hackathons.</p>
+                                    </div>
+                                </div>
+                                <div class="gradient-edge-bottom h-100"></div>
+                                <img src="images/misc/s7.webp" class="w-100 hover-scale-1-1" alt="">
+                                <div class="abs w-100 h-100 start-0 top-0 hover-op-1 radial-gradient-color"></div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0SUhiSD3IfpaJ6vbjwA2hESYU1ohyA7xUDZuhdSzkfSJZ0w/viewform?usp=pp_url&entry.123456=TINT+Photography+Club" target="_blank" style="text-decoration:none; color:inherit;">
+                        <div class="hover">
+                            <div class="bg-dark-2 relative rounded-1 overflow-hidden hover-bg-color hover-text-light wow scale-in-mask">
+                                <div class="abs p-40 bottom-0 z-2">
+                                    <div class="relative wow fadeInUp">
+                                        <h4>IEEE Student Chapter</h4>
+                                        <p class="mb-0">The world’s largest technical organization advancing technology with workshops, projects, and industry interactions.</p>
+                                    </div>
+                                </div>
+                                <div class="gradient-edge-bottom h-100"></div>
+                                <img src="images/misc/s8.jpg" class="w-100 hover-scale-1-1" alt="">
+                                <div class="abs w-100 h-100 start-0 top-0 hover-op-1 radial-gradient-color"></div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -652,9 +706,9 @@ document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
     document.getElementById('chatbot-messages').innerHTML = "";
 
     // Clear conversation history for new survey
-    if (typeof conversationHistory !== "undefined") {
-        conversationHistory = [];
-    }
+ if (typeof initializeConversationHistory === "function") {
+    initializeConversationHistory();
+}
 
     // Predefined message (not shown as user message)
     const predefinedMessage = "Hi! I want a quick club recommendation survey. Give me questions one by one, Total 4-5 questions. The available clubs are: 1.TINT Photography, 2.TINT Film Club, 3. TINT Dance Club, 4. TINT Art Club, 5.TINT Coding Club, 6.TINT Google Developer Student Club";
