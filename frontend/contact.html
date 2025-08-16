@@ -18,7 +18,20 @@
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" >
 
 </head>
-
+<div id="chatbot-icon">💬</div>
+    <div id="chatbot-container" class="hidden">
+      <div id="chatbot-header">
+        <span>Club Assistant</span>
+        <button id="close-btn">&times;</button>
+      </div>
+      <div id="chatbot-body">
+        <div id="chatbot-messages"></div>
+      </div>
+      <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Type a message" />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
 <body class="dark-scheme">
 
     <div id="wrapper">
@@ -38,7 +51,7 @@
                     <div class="col-md-12">
                         <div class="de-flex">
                             <div class="de-flex-col">
-                                <!-- logo begin -->
+                                
                                 <div id="logo">
                                     <a href="index.html">
                                         <img class="logo-main" src="images/logo.png" alt="" >
@@ -46,20 +59,29 @@
                                         <img class="logo-mobile" src="images/logo.png" alt="" >
                                     </a>
                                 </div>
-                                <!-- logo close -->
+                               
                             </div>
 
                             <div class="de-flex-col">
                                 <div class="de-flex-col header-col-mid">
                                     <ul id="mainmenu">
-                                        
-                                          
-                                        <li><a class="menu-item" href="index.html">Home</a></li>
-                                        
-                                    </ul>
+                                        <li><a class="menu-item" href="index.html#section-hero">Home</a></li>
+                                        <li><a class="menu-item" href="index.html#section-about">About</a></li>
+                                        <li><a class="menu-item" href="index.html#section-why-attend">Clubs</a></li>
+                                        <li><a class="menu-item" href="index.html#attendance-sec">Attendace</a></li>
+                                        <li><a class="menu-item" href="index.html#section-speakers">Team</a></li>
+                                        <li><a class="menu-item" href="index.html#section-faq">Events</a></li>
+                                        <li><a class="menu-item" href="contact.html">Host a event</a></li>
                                 </div>
                             </div>
 
+                            <div class="de-flex-col">
+                                <a class="btn-main fx-slide w-100" href="#"><span>Login</span></a>
+
+                                <div class="menu_side_area">
+                                    <span id="menu-btn"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,6 +147,10 @@
                                 <div class="field-set">
                                     <textarea name="message" id="message" class="form-underline h-100px" placeholder="Enter event details here" required></textarea>
                                 </div>
+
+                                <div class="field-set">
+                                    <input type="date" name="event_date" id="event_date" class="form-underline" placeholder="Event Date" required>
+                                </div>
                             </div>
                         </div>
                             
@@ -156,6 +182,68 @@
     <script src="js/vendors.js"></script>
     <script src="js/designesia.js"></script>
     <script src="js/validation-contact.js"></script>
+       <script src="js/script.js"></script>
+<script>
+document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const chatbot = document.getElementById('chatbot-container');
+    chatbot.classList.remove('hidden');
+    chatbot.classList.remove('popup-animate'); // reset if needed
+    // Trigger reflow to restart animation
+    void chatbot.offsetWidth;
+    chatbot.classList.add('popup-animate');
+    document.getElementById('chatbot-input').focus();
+
+    // Clear previous messages
+    document.getElementById('chatbot-messages').innerHTML = "";
+
+    // Clear conversation history for new survey
+ if (typeof initializeConversationHistory === "function") {
+    initializeConversationHistory();
+}
+
+    // Predefined message (not shown as user message)
+    const predefinedMessage = "Hi! I want a quick club recommendation survey. Give me questions one by one, Total 4-5 questions. The available clubs are: 1.TINT Photography, 2.TINT Film Club, 3. TINT Dance Club, 4. TINT Art Club, 5.TINT Coding Club, 6.TINT Google Developer Student Club";
+
+    // Send to Gemini, but do not show as user message
+    sendMessage(predefinedMessage, false);
+});
+
+// Close button logic for chatbot
+document.getElementById('close-btn').addEventListener('click', function() {
+    const chatbot = document.getElementById('chatbot-container');
+    chatbot.classList.add('hidden');
+    chatbot.classList.remove('popup-animate');
+});
+
+document.getElementById('contact_form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Get form values
+    const title = document.getElementById('name').value.trim();
+    const details = document.getElementById('message').value.trim();
+    const date = document.getElementById('event_date').value;
+
+    // Create event object
+    const event = {
+        title,
+        details,
+        date
+    };
+
+    // Get existing events from localStorage or empty array
+    let events = JSON.parse(localStorage.getItem('customEvents') || '[]');
+    // Add new event to the beginning
+    events.unshift(event);
+    // Save back to localStorage
+    localStorage.setItem('customEvents', JSON.stringify(events));
+
+    // Optionally show a success message or redirect
+    alert('Your event has been submitted and will appear on the home page!');
+    // Optionally reset the form
+    this.reset();
+});
+</script>
 
 </body>
 
