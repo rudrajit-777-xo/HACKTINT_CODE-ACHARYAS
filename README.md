@@ -30,6 +30,7 @@ We have integrated **Gemini API** to build the AI chatbot, which guides students
 - Answering campus-related queries  
 
 **API Used:**  
+GEMINI API
 
 ## 👨‍💻 Contributors
 
