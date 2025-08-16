@@ -192,6 +192,7 @@
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-6 offset-lg-3 text-center">
+                        <div class="subtitle wow fadeInUp mb-3">Clubs</div>
                         <h2 class="wow fadeInUp" data-wow-delay=".2s">Where you can participate!</h2>
                         
                     </div>
@@ -637,14 +638,6 @@
     <script src="js/countdown-custom.js"></script>
     <script src="js/custom-marquee.js"></script>
     <script src="js/script.js"></script>
-<<<<<<< Updated upstream
-<script>
-document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    document.getElementById('chatbot-container').classList.remove('hidden');
-    
-=======
 // ...existing code...
 <script>
 document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
@@ -655,28 +648,16 @@ document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
     // Trigger reflow to restart animation
     void chatbot.offsetWidth;
     chatbot.classList.add('popup-animate');
->>>>>>> Stashed changes
     document.getElementById('chatbot-input').focus();
 
     
     const predefinedMessage = "Hi! I want a quick club recommendation survey. Give me questions one by one, Total 4-5 questions. The available clubs are: 1.TINT Photography, 2.TINT Film Club, 3. TINT Dance Club, 4. TINT Art Club, 5.TINT Coding Club, 6.TINT Google Developer Student Club";
 
-<<<<<<< Updated upstream
-  
-    document.getElementById('chatbot-input').value = predefinedMessage;
-
-    
-    if (typeof sendMessage === "function") {
-        sendMessage(predefinedMessage);
-    } else {
-        
-=======
     document.getElementById('chatbot-input').value = predefinedMessage;
 
     if (typeof sendMessage === "function") {
         sendMessage(predefinedMessage);
     } else {
->>>>>>> Stashed changes
         document.getElementById('send-btn').click();
     }
 });
