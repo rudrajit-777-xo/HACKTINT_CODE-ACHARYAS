@@ -70,7 +70,7 @@ async function getBotResponse(userMessage) {
 }
 
 
-const sheetUrl = "YOUR_PUBLISHED_SHEET_CSV_LINK"; // Replace with your sheet's CSV link
+const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTszgbktK85t4BMUzj8aG6hjGtbTjpB5MRFRGw1Fjjox0yBjndM3Smc7mVXX3iaOcTsdFM6KYINqHs/pub?gid=0&single=true&output=csv"; // Replace with your sheet's CSV link
     const studentId = "24187001185"; // Hardcoded Student ID
     const subjectsList = ["DSA", "Economics", "Mathematics", "Analog & Digital", "Computer Organisation"];
 
