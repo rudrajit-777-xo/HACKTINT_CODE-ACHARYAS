@@ -253,3 +253,39 @@ const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTszgbktK85t4
           subjectsDiv.appendChild(subjectElem);
         });
       });
+
+
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    // Get custom events from localStorage
+    let events = JSON.parse(localStorage.getItem('customEvents') || '[]');
+    if (events.length === 0) return;
+
+    // Find the accordion section
+    const accordion = document.querySelector('.accordion-section');
+    if (!accordion) return;
+
+    // For each event, create the accordion HTML and insert at the top
+    events.forEach(event => {
+        // Create title
+        const titleDiv = document.createElement('div');
+        const uniqueId = 'accordion-custom-' + Math.random().toString(36).substr(2, 9);
+        titleDiv.className = 'accordion-section-title';
+        titleDiv.setAttribute('data-tab', '#' + uniqueId);
+        titleDiv.textContent = event.title;
+
+        // Create content
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'accordion-section-content';
+        contentDiv.id = uniqueId;
+        contentDiv.innerHTML = `
+            <p><strong>Date:</strong> ${event.date}</p>
+            <p>${event.details}</p>
+        `;
+
+        // Insert at the top
+        accordion.insertBefore(contentDiv, accordion.firstChild);
+        accordion.insertBefore(titleDiv, contentDiv);
+    });
+});
