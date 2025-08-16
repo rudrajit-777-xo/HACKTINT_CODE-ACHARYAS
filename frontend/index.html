@@ -114,7 +114,7 @@
                             <div class="col-lg-4">
                                 <div class="d-flex">
                                     <div class="ms-3 d-flex align-items-center">
-                                        <a class="btn-main fx-slide btn-lg w-100 animated-border-btn" href="#chatbot-container"><span>Take Quick AI Survey</span></a>
+                                        <a class="btn-main fx-slide btn-lg w-100 animated-border-btn" id="ai-survey-btn" href="#chatbot-container"><span>Take Quick AI Survey</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -617,6 +617,30 @@
     <script src="js/countdown-custom.js"></script>
     <script src="js/custom-marquee.js"></script>
     <script src="js/script.js"></script>
+    <!-- ...existing code... -->
+<script>
+document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Open chatbot window
+    document.getElementById('chatbot-container').classList.remove('hidden');
+    // Optional: focus input
+    document.getElementById('chatbot-input').focus();
+
+    // Predefined message
+    const predefinedMessage = "Hi! I want a quick club recommendation survey. Give me questions one by one, Total 4-5 questions. The available clubs are: 1.TINT Photography, 2.TINT Film Club, 3. TINT Dance Club, 4. TINT Art Club, 5.TINT Coding Club, 6.TINT Google Developer Student Club";
+
+    // Insert message into input and simulate send
+    document.getElementById('chatbot-input').value = predefinedMessage;
+
+    // If you have a sendMessage function, call it directly:
+    if (typeof sendMessage === "function") {
+        sendMessage(predefinedMessage);
+    } else {
+        // Otherwise, simulate clicking the send button
+        document.getElementById('send-btn').click();
+    }
+});
+</script>
 
 </body>
 
