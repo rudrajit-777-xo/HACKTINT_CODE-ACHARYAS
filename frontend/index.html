@@ -638,7 +638,6 @@
     <script src="js/countdown-custom.js"></script>
     <script src="js/custom-marquee.js"></script>
     <script src="js/script.js"></script>
-// ...existing code...
 <script>
 document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
     e.preventDefault();
@@ -650,16 +649,19 @@ document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
     chatbot.classList.add('popup-animate');
     document.getElementById('chatbot-input').focus();
 
-    
+    // Clear previous messages
+    document.getElementById('chatbot-messages').innerHTML = "";
+
+    // Clear conversation history for new survey
+    if (typeof conversationHistory !== "undefined") {
+        conversationHistory = [];
+    }
+
+    // Predefined message (not shown as user message)
     const predefinedMessage = "Hi! I want a quick club recommendation survey. Give me questions one by one, Total 4-5 questions. The available clubs are: 1.TINT Photography, 2.TINT Film Club, 3. TINT Dance Club, 4. TINT Art Club, 5.TINT Coding Club, 6.TINT Google Developer Student Club";
 
-    document.getElementById('chatbot-input').value = predefinedMessage;
-
-    if (typeof sendMessage === "function") {
-        sendMessage(predefinedMessage);
-    } else {
-        document.getElementById('send-btn').click();
-    }
+    // Send to Gemini, but do not show as user message
+    sendMessage(predefinedMessage, false);
 });
 
 // Close button logic for chatbot
@@ -669,7 +671,6 @@ document.getElementById('close-btn').addEventListener('click', function() {
     chatbot.classList.remove('popup-animate');
 });
 </script>
-// ...existing code...
 
 </body>
 
