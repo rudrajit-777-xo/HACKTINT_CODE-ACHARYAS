@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Attendance Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 20px;
+    }
+    .attendance-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      max-width: 900px;
+      margin: auto;
+    }
+    /* Left side - Overall attendance */
+    .overall {
+      flex: 1;
+      background: #0ea5e9;
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin-right: 20px;
+    }
+    .overall h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .overall p {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Right side - Subject-wise */
+    .subject-list {
+      flex: 2;
+    }
+    .subject {
+      margin-bottom: 20px;
+    }
+    .subject p {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .progress-bar {
+      height: 12px;
+      background: #334155;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: #22c55e;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="attendance-section">
+    <!-- Left: Overall Attendance -->
+    <div class="overall">
+      <h2>Overall Attendance</h2>
+      <p id="overallPercent">Loading...</p>
+    </div>
+
+    <!-- Right: Subject-wise -->
+    <div class="subject-list" id="subjects">
+      <h2>Subject-wise Attendance</h2>
+    </div>
+  </div>
+
+  <script>
+    const sheetUrl = "YOUR_PUBLISHED_SHEET_CSV_LINK"; // Replace with your sheet's CSV link
+    const studentId = "24187001185"; // Hardcoded Student ID
+    const subjectsList = ["DSA", "Economics", "Mathematics", "Analog & Digital", "Computer Organisation"];
+
+    fetch(sheetUrl)
+      .then(res => res.text())
+      .then(data => {
+        const rows = data.split("\n").map(row => row.split(","));
+        let present = 0, total = 0;
+        let subjects = {};
+
+        subjectsList.forEach(s => subjects[s] = { present: 0, total: 0 });
+
+        rows.slice(1).forEach(row => {
+          const [date, id, name, subject, status] = row.map(r => r.trim());
+          if (id === studentId && subjects[subject]) {
+            subjects[subject].total++;
+            if (status.toLowerCase() === "present") {
+              subjects[subject].present++;
+              present++;
+            }
+            total++;
+          }
+        });
+
+        // Overall attendance
+        const overallPercent = total > 0 ? ((present / total) * 100).toFixed(2) : 0;
+        document.getElementById("overallPercent").innerText = overallPercent + "%";
+
+        // Subject-wise attendance
+        const subjectsDiv = document.getElementById("subjects");
+        subjectsList.forEach(sub => {
+          const stats = subjects[sub];
+          const percent = stats.total > 0 ? ((stats.present / stats.total) * 100).toFixed(2) : 0;
+
+          const subjectElem = document.createElement("div");
+          subjectElem.classList.add("subject");
+          subjectElem.innerHTML = `
+            <p>${sub}: ${percent}%</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: ${percent}%;"></div>
+            </div>
+          `;
+          subjectsDiv.appendChild(subjectElem);
+        });
+      });
+  </script>
+</body>
+</html>

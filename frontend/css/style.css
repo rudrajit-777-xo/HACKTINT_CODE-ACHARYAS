@@ -13246,3 +13246,105 @@ img {
   #send-btn:hover {
     background-color: #b71c1c;
   }
+
+/* ...existing code... */
+
+/* Hide Chatbot Initially */
+.hidden {
+  display: none !important;
+}
+
+/* Popup animation */
+#chatbot-container {
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.3s;
+}
+
+#chatbot-container.popup-animate {
+  animation: chatbot-pop-in 0.35s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+@keyframes chatbot-pop-in {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* ...existing code... */
+
+.attendance-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: rgba(30, 41, 59, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      gap: 30px;
+      max-width: 1000px;
+      min-height: 380px;
+      margin: auto;
+    }
+    /* Left side - Overall attendance */
+    .overall {
+      flex: 2;
+      background: #0ea5e9;
+      padding: 50px 40px;
+      border-radius: 15px;
+      text-align: center;
+      margin-right: 30px;
+      min-width: 0;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto
+
+    }
+    .overall h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .overall p {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Right side - Subject-wise */
+    .subject-list {
+      flex: 2;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .subject {
+      margin-bottom: 20px;
+    }
+    .subject p {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .progress-bar {
+      height: 12px;
+      background: #334155;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: #22c55e;
+      width: 0%;
+      transition: width 0.5s ease;
+    }

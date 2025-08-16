@@ -320,20 +320,24 @@
             <div class="sw-overlay op-8"></div>
             <div class="container relative z-4">
                 <div class="row align-items-center g-5">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4"> -->
                         <div class="relative w-100 d-inline-block pe-5">
-                            <div class="abs bg-color w-80px h-80px rounded-1 text-center end-0 z-2 wow scaleIn">
-                                <i class="icofont-quote-left text-white fs-40 d-block pt-3"></i>
+                            <div class="attendance-section">
+                                <!-- Left: Overall Attendance -->
+                                <div class="overall">
+                                    <h2>Overall Attendance</h2>
+                                    <p id="overallPercent">Loading...</p>
+                                </div>
+
+                                <!-- Right: Subject-wise -->
+                                <div class="subject-list" id="subjects">
+                                    <h2>Subject-wise Attendance</h2>
+                                </div>
                             </div>
-                            <img src="images/misc/s9.webp" class="w-100 rounded-1 wow scale-in-mask" alt="">
+                        </div>
                         </div>
                     </div>
 
-                    <div class="col-md-8">
-                        <h3 class="fs-32 mb-4 wow fadeInUp">“Artificial intelligence is advancing rapidly, and while it offers immense opportunity, it also poses significant risks. If not properly regulated and aligned with human values, AI could become a fundamental threat to civilization.”</h3>
-
-                        <span>Elon Musk</span>
-                    </div>
                 </div>
             </div>
         </section>
@@ -634,17 +638,31 @@
     <script src="js/countdown-custom.js"></script>
     <script src="js/custom-marquee.js"></script>
     <script src="js/script.js"></script>
+<<<<<<< Updated upstream
 <script>
 document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
     e.preventDefault();
     
     document.getElementById('chatbot-container').classList.remove('hidden');
     
+=======
+// ...existing code...
+<script>
+document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const chatbot = document.getElementById('chatbot-container');
+    chatbot.classList.remove('hidden');
+    chatbot.classList.remove('popup-animate'); // reset if needed
+    // Trigger reflow to restart animation
+    void chatbot.offsetWidth;
+    chatbot.classList.add('popup-animate');
+>>>>>>> Stashed changes
     document.getElementById('chatbot-input').focus();
 
     
     const predefinedMessage = "Hi! I want a quick club recommendation survey. Give me questions one by one, Total 4-5 questions. The available clubs are: 1.TINT Photography, 2.TINT Film Club, 3. TINT Dance Club, 4. TINT Art Club, 5.TINT Coding Club, 6.TINT Google Developer Student Club";
 
+<<<<<<< Updated upstream
   
     document.getElementById('chatbot-input').value = predefinedMessage;
 
@@ -653,10 +671,25 @@ document.getElementById('ai-survey-btn').addEventListener('click', function(e) {
         sendMessage(predefinedMessage);
     } else {
         
+=======
+    document.getElementById('chatbot-input').value = predefinedMessage;
+
+    if (typeof sendMessage === "function") {
+        sendMessage(predefinedMessage);
+    } else {
+>>>>>>> Stashed changes
         document.getElementById('send-btn').click();
     }
 });
+
+// Close button logic for chatbot
+document.getElementById('close-btn').addEventListener('click', function() {
+    const chatbot = document.getElementById('chatbot-container');
+    chatbot.classList.add('hidden');
+    chatbot.classList.remove('popup-animate');
+});
 </script>
+// ...existing code...
 
 </body>
 

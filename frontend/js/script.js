@@ -68,3 +68,51 @@ async function getBotResponse(userMessage) {
         appendMessage("bot", "Sorry, I'm having trouble responding. Please try again.");
     }
 }
+
+
+const sheetUrl = "YOUR_PUBLISHED_SHEET_CSV_LINK"; // Replace with your sheet's CSV link
+    const studentId = "24187001185"; // Hardcoded Student ID
+    const subjectsList = ["DSA", "Economics", "Mathematics", "Analog & Digital", "Computer Organisation"];
+
+    fetch(sheetUrl)
+      .then(res => res.text())
+      .then(data => {
+        const rows = data.split("\n").map(row => row.split(","));
+        let present = 0, total = 0;
+        let subjects = {};
+
+        subjectsList.forEach(s => subjects[s] = { present: 0, total: 0 });
+
+        rows.slice(1).forEach(row => {
+          const [date, id, name, subject, status] = row.map(r => r.trim());
+          if (id === studentId && subjects[subject]) {
+            subjects[subject].total++;
+            if (status.toLowerCase() === "present") {
+              subjects[subject].present++;
+              present++;
+            }
+            total++;
+          }
+        });
+
+        // Overall attendance
+        const overallPercent = total > 0 ? ((present / total) * 100).toFixed(2) : 0;
+        document.getElementById("overallPercent").innerText = overallPercent + "%";
+
+        // Subject-wise attendance
+        const subjectsDiv = document.getElementById("subjects");
+        subjectsList.forEach(sub => {
+          const stats = subjects[sub];
+          const percent = stats.total > 0 ? ((stats.present / stats.total) * 100).toFixed(2) : 0;
+
+          const subjectElem = document.createElement("div");
+          subjectElem.classList.add("subject");
+          subjectElem.innerHTML = `
+            <p>${sub}: ${percent}%</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: ${percent}%;"></div>
+            </div>
+          `;
+          subjectsDiv.appendChild(subjectElem);
+        });
+      });
