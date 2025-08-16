@@ -13398,3 +13398,18 @@ img {
     border-radius: 4px;
     font-family: monospace;
 }
+
+/* Blur effect for club section tiles */
+.bg-dark-2.relative.rounded-1.overflow-hidden.hover-bg-color.hover-text-light.wow.scale-in-mask {
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-dark-2.relative.rounded-1.overflow-hidden.hover-bg-color.hover-text-light.wow.scale-in-mask img {
+    filter: blur(1.4px) brightness(0.7);
+    transition: filter 0.3s;
+}
+
+.bg-dark-2.relative.rounded-1.overflow-hidden.hover-bg-color.hover-text-light.wow.scale-in-mask:hover img {
+    filter: blur(3px) brightness(0.8);
+}
