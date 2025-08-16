@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     chatbotIcon.addEventListener("click", () => {
         chatbotContainer.classList.remove("hidden");
         chatbotIcon.style.display = "none";
+        // Clear previous messages
+        document.getElementById('chatbot-messages').innerHTML = "";
+        // Always initialize context
+        initializeConversationHistory();
     });
 
     closeBtn.addEventListener("click", () => {
@@ -20,7 +24,104 @@ document.addEventListener("DOMContentLoaded", function () {
     chatBotInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") sendMessage();
     });
+
+    initializeConversationHistory();
 });
+
+function initializeConversationHistory() {
+    conversationHistory = [
+        {
+            role: "user",
+            parts: [{
+                text: `
+You are ACCUCAMPUS, an AI assistant for TINT campus.
+You are an expert on all TINT clubs, campus events, and student life.
+Always answer questions with up-to-date, accurate, and helpful information about TINT clubs, their activities, joining process, and campus resources.
+
+Here are the details of the clubs and their events:
+
+TINT PHOTOGRAPHY CLUB:
+TINT Photography Club is the official photography club of Techno International New Town. The club nurtures creativity and helps students express their ideas through photography. It was founded with the support of the college leadership and brings together students from all departments who share a passion for photography. The club was inaugurated in March 2019 during the cultural fest.
+
+Objectives:
+- Provide a platform for photographic activities, idea exchange, and experience sharing.
+- Enable students to discover, develop, and deploy creative skills through events, photo walks, and workshops.
+- Encourage holistic development and help manifest the artist within.
+
+Activities:
+- Photo exhibitions and competitions (e.g., DRISTI)
+- Photo story sessions with photographers
+- Event photography for college events
+- Intra-club and intra-college competitions on various themes
+- Webinars and workshops
+- Annual exhibition with the Art Club
+
+Membership:
+- Requires a No-Objection Certificate from the Head of Department
+- Open to students with a genuine interest in photography
+- Membership is confirmed after document verification and review of submitted photos
+- Members are expected to attend meetings and participate in club activities
+
+Advisory Committee and Faculty:
+- Includes college leadership and faculty from various departments
+- Convenor: Prof.(Dr). Anindita Ray (BSH)
+- Co-convenor: Prof. (Dr). Ammlan Ghosh (MCA)
+- Additional faculty and staff members
+
+Facebook Page: https://www.facebook.com/tintphotoclub
+
+TINT TALKIES (Film Club):
+TINT Talkies is the official film club of Techno International New Town, inaugurated in July 2019. The club brings together students and film enthusiasts to appreciate and discuss films as an art form. The club was launched with the support of college leadership and notable film personalities.
+
+Activities:
+- Film screenings and discussions
+- Panel discussions on film and technology
+- Opportunities to learn from industry professionals
+
+Membership:
+- Open to students interested in film appreciation and discussion
+
+Advisory Committee and Faculty:
+- Includes college leadership and faculty from various departments
+- Convenor: Prof. (Dr). Anwesha Dutta Ain (BSH)
+- Co-convenor: Prof.(Dr). Kakali Ghosh (BSH)
+- Additional faculty and staff members
+
+Registration: https://forms.gle/tPhhpnudRUJQX3QH8
+Facebook Page: https://www.facebook.com/TINT.Film.Club.TINT.Talkies/
+
+TINT ART CLUB - AESTHETICA:
+AESTHETICA is the official Art club of TINT, established to foster a passion for visual arts. The club provides a platform for creativity, self-expression, and understanding of art concepts. It supports students seeking a creative break alongside academics.
+
+Activities:
+- Drawing, sketching, and painting sessions
+- Seminars, competitions, workshops, and group projects
+- Outings to museums and art galleries
+
+Membership:
+- Open to students with a serious interest in art
+- Requires a No-Objection Certificate from the Head of Department
+- Members are expected to attend meetings and participate in club activities
+
+Advisory Committee and Faculty:
+- Includes college leadership and faculty from various departments
+- Convenor: Prof. (Dr.) Papiya Debnath (BSH)
+- Additional faculty and staff members
+
+Facebook Page: https://www.facebook.com/TINT.Art.Club.Aesthetica
+
+TINT CODING CLUB:
+The Coding Club is a community of students passionate about coding and technology. The club organizes weekly coding challenges, hackathons, and peer-to-peer learning sessions.
+
+TINT GOOGLE DEVELOPER STUDENT CLUB:
+This club is a community of students interested in technology and innovation. Activities include tech talks, study jams, and open source contribution drives.
+
+If you don't know an answer, politely say so.
+                `
+            }]
+        }
+    ];
+}
 
 function sendMessage(message = null, showUserMessage = true) {
     const inputField = document.getElementById("chatbot-input");
